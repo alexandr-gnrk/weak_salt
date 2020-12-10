@@ -31,20 +31,23 @@ xored_bts = bytes_xor(
 crib = 'and'
 crib_bts = bytes(crib, encoding='ascii')
 
+
 def yes_no(msg):
     resp = input(msg + ' (y/n): ')
-    if resp == 'y':
+    if resp == 'y' or resp == '':
         return True
     return False
 
+
 def is_promising(text):
-    promising_charset = string.ascii_letters + ' ,!?'
+    promising_charset = string.ascii_letters + ' .,?! :;\'"'
     for char in text:
         if char not in promising_charset:
             return False
     return True
 
-def print_crib_result(xored_bts, crib_bts):
+
+def print_crib_result(xored_bts, crib_bts, skip_not_promising=False):
     for i in range(len(xored_bts) - len(crib_bts) + 1):
         try:
             result = bytes_xor(xored_bts[i:i+len(crib_bts)], crib_bts).decode('ascii')
@@ -53,10 +56,12 @@ def print_crib_result(xored_bts, crib_bts):
             label = '[-]'
             result = ''
 
+        if skip_not_promising and not is_promising(result):
+            continue
         print('{:2}{} {}'.format(i, label, result))
 
 
-def print_common_cribs():
+def print_common_cribs(xored_bts, skip_not_promising=False):
     crib_words = (
         'the', 'and', 'that', 'have',
         'for', 'not', 'with', 'you', 
@@ -64,24 +69,39 @@ def print_common_cribs():
         'her', 'she', 'will',
         )
     for i, crib in enumerate(crib_words):
+        print('==========[ {}/{} Crib "{}" ]=========='.format(
+            i + 1, len(crib_words), crib))
         crib_bts = bytes(crib, encoding='ascii')
+        print_crib_result(xored_bts, crib_bts, skip_not_promising)
+
+        if not yes_no('Continue?'):
+            break
 
 
+# get ciphertexts
+use_sample = yes_no('Do you want to use sample ciphertext messages?')
+if use_sample:
+    lines = ciphertext_example.split()
+    cipher1 = lines[0]
+    cipher2 = lines[1]
+    print('Ciphertexts: \n\t{}\n\t{}'.format(cipher1, cipher2))
+else:
+    cipher1 = input('Enter first ciphertext:\n\t')
+    cipher2 = input('Enter second ciphertext:\n\t')
 
-# # get ciphertexts
-# use_sample = yes_no('Do you want to use sample ciphertext messages?')
-# if use_sample:
-#     lines = ciphertext_example.split()
-#     cipher1 = lines[0]
-#     cipher2 = lines[1]
-# else:
-#     cipher1 = input('Enter first ciphertext:\n\t')
-#     cipher2 = input('Enter second ciphertext:\n\t')
+skip_not_promising = yes_no('Do you want to skip not promising results?')
 
-# # decode from hex
-# cipher1_bts = bytes.fromhex(cipher1)
-# cipher2_bts = bytes.fromhex(cipher2)
+# decode from hex
+cipher1_bts = bytes.fromhex(cipher1)
+cipher2_bts = bytes.fromhex(cipher2)
+xored_bts = bytes_xor(cipher1_bts, cipher2_bts)
 
-# check_common_crib = yes_no(f'Do you want to check common crib words?')
-# if check_common_crib:
-#     print_common_cribs()
+check_common_crib = yes_no(f'Do you want to check common crib words?')
+if check_common_crib:
+    print_common_cribs(xored_bts, skip_not_promising)
+
+while True:
+    crib = input('Enter your crib: ')
+    crib_bts = bytes(crib, encoding='ascii')
+    print('==========[ Crib "{}" ]=========='.format(crib))
+    print_crib_result(xored_bts, crib_bts, skip_not_promising)
