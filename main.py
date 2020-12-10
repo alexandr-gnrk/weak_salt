@@ -40,7 +40,7 @@ def yes_no(msg):
 
 
 def is_promising(text):
-    promising_charset = string.ascii_letters + ' .,?! :;\'"'
+    promising_charset = string.ascii_letters + ' -.,?! :;\'"'
     for char in text:
         if char not in promising_charset:
             return False
