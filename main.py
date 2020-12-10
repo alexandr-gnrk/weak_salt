@@ -29,8 +29,11 @@ def yes_no(msg):
     return False
 
 def is_promising(text):
-    # promising_charset = 
-    pass
+    promising_charset = string.ascii_letters + ' ,!?'
+    for char in text:
+        if char not in promising_charset:
+            return False
+    return True
 
 def print_crib_result(cipher_bts, crib_bts):
     for i in range(len(cipher_bts) - len(crib_bts) + 1):
