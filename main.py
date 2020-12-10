@@ -20,7 +20,16 @@ a59a0e6c462cf83113bd8bb31238e6be67c42bcded09ff4916f262c2e3c087c897085ae8a76019bc
 '''
 
 def bytes_xor(bts1, bts2):
-    return bytes(bts1[i] ^ bts2[i] for i in range(min(len(bts1), len(bts2))))
+    return bytes([x ^ y for x, y in zip(bts1, bts2)])
+
+
+lines = ciphertext_example.split()
+xored_bts = bytes_xor(
+    bytes.fromhex(lines[0]), 
+    bytes.fromhex(lines[1])
+    )
+crib = 'and'
+crib_bts = bytes(crib, encoding='ascii')
 
 def yes_no(msg):
     resp = input(msg + ' (y/n): ')
@@ -35,10 +44,17 @@ def is_promising(text):
             return False
     return True
 
-def print_crib_result(cipher_bts, crib_bts):
-    for i in range(len(cipher_bts) - len(crib_bts) + 1):
-        # print('')
-        pass
+def print_crib_result(xored_bts, crib_bts):
+    for i in range(len(xored_bts) - len(crib_bts) + 1):
+        try:
+            result = bytes_xor(xored_bts[i:i+len(crib_bts)], crib_bts).decode('ascii')
+            label = '[*]' if is_promising(result) else '[ ]'
+        except UnicodeDecodeError:
+            label = '[-]'
+            result = ''
+
+        print('{:2}{} {}'.format(i, label, result))
+
 
 def print_common_cribs():
     crib_words = (
@@ -52,20 +68,20 @@ def print_common_cribs():
 
 
 
-# get ciphertexts
-use_sample = yes_no('Do you want to use sample ciphertext messages?')
-if use_sample:
-    lines = ciphertext_example.split()
-    cipher1 = lines[0]
-    cipher2 = lines[1]
-else:
-    cipher1 = input('Enter first ciphertext:\n\t')
-    cipher2 = input('Enter second ciphertext:\n\t')
+# # get ciphertexts
+# use_sample = yes_no('Do you want to use sample ciphertext messages?')
+# if use_sample:
+#     lines = ciphertext_example.split()
+#     cipher1 = lines[0]
+#     cipher2 = lines[1]
+# else:
+#     cipher1 = input('Enter first ciphertext:\n\t')
+#     cipher2 = input('Enter second ciphertext:\n\t')
 
-# decode from hex
-cipher1_bts = bytes.fromhex(cipher1)
-cipher2_bts = bytes.fromhex(cipher2)
+# # decode from hex
+# cipher1_bts = bytes.fromhex(cipher1)
+# cipher2_bts = bytes.fromhex(cipher2)
 
-check_common_crib = yes_no(f'Do you want to check common crib words?')
-if check_common_crib:
-    print_common_cribs()
+# check_common_crib = yes_no(f'Do you want to check common crib words?')
+# if check_common_crib:
+#     print_common_cribs()
