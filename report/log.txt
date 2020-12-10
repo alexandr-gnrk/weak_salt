@@ -1,0 +1,98 @@
+Do you want to use sample ciphertext messages? (y/n): 
+Ciphertexts: 
+    ad924af7a9cdaf3a1bb0c3fe1a20a3f367d82b0f05f8e75643ba688ea2ce8ec88f4762fbe93b50bf5138c7b699
+    a59a0eaeb4d1fc325ab797b31425e6bc66d36e5b18efe8060cb32edeaad68180db4979ede43856a24c7d
+Do you want to skip not promising results? (y/n): 
+Do you want to check common crib words? (y/n):  
+==========[ 1/15 Crib "the" ]==========
+ 5[*] h;m
+12[*] zm 
+15[*] ;in
+16[*] uc 
+19[*]  ur
+33[*] zss
+35[*] bef
+36[*] ykc
+37[*] wnx
+38[*] rux
+39[*] iu 
+Continue? (y/n): 
+==========[ 2/15 Crib "and" ]==========
+ 0[*] if 
+12[*] ok!
+15[*] .oo
+24[*] .g"
+28[*] ivk
+29[*] ya,
+33[*] our
+34[*] zxi
+35[*] wcg
+36[*] lmb
+37[*] bhy
+38[*] gsy
+Continue? (y/n): n
+Enter your crib: and 
+==========[ Crib "and " ]==========
+ 0[*] if y
+12[*] ok!o
+15[*] .ooe
+24[*] .g"p
+28[*] ivkh
+29[*] ya,t
+38[*] gsye
+Enter your crib: if you 
+==========[ Crib "if you " ]==========
+ 0[*] and ris
+ 4[*] tzsq.rt
+Enter your crib: and risk
+==========[ Crib "and risk" ]==========
+ 0[*] if you c
+Enter your crib: if you can
+==========[ Crib "if you can" ]==========
+ 0[*] and risk i
+ 4[*] tzsq.rt.ok
+Enter your crib: if you can 
+==========[ Crib "if you can " ]==========
+ 0[*] and risk it
+ 4[*] tzsq.rt.oke
+Enter your crib: and risk it 
+==========[ Crib "and risk it " ]==========
+ 0[*] if you can m
+Enter your crib: if you can make
+==========[ Crib "if you can make" ]==========
+ 0[*] and risk it on 
+Enter your crib: and risk it on 
+==========[ Crib "and risk it on " ]==========
+ 0[*] if you can make
+Enter your crib: and rist it on the
+==========[ Crib "and rist it on the" ]==========
+Enter your crib: if you can make the
+==========[ Crib "if you can make the" ]==========
+ 0[*] and risk it on ouc 
+Enter your crib: if you can make one
+==========[ Crib "if you can make one" ]==========
+ 0[*] and risk it on one 
+Enter your crib: if you can make one 
+==========[ Crib "if you can make one " ]==========
+ 0[*] and risk it on one t
+Enter your crib: and risk it on one turn
+==========[ Crib "and risk it on one turn" ]==========
+ 0[*] if you can make one hea
+Enter your crib: and risk it on one turn 
+==========[ Crib "and risk it on one turn " ]==========
+ 0[*] if you can make one heap
+Enter your crib: if you can make one heap 
+==========[ Crib "if you can make one heap " ]==========
+ 0[*] and risk it on one turn o
+Enter your crib: and risk it on one turn of 
+==========[ Crib "and risk it on one turn of " ]==========
+ 0[*] if you can make one heap of
+Enter your crib: if you can make one heap of       
+==========[ Crib "if you can make one heap of " ]==========
+ 0[*] and risk it on one turn of p
+Enter your crib: if you can make one heap of all
+==========[ Crib "if you can make one heap of all" ]==========
+ 0[*] and risk it on one turn of pitc
+Enter your crib: you can make one heap of all your winn
+==========[ Crib "you can make one heap of all your winn" ]==========
+ 3[*]  risk it on one turn of pitch-and-toss
